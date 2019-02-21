@@ -32,18 +32,18 @@ class Log:
         # add handler
         self.logger.addHandler(handler)
 
-    class MyLog:
-        log = None
-        mutex = threading.Lock()
+class MyLog:
+    log = None
+    mutex = threading.Lock()
 
-        def __init__(self):
-            pass
+    def __init__(self):
+        pass
 
-        @staticmethod
-        def get_log():
-            if MyLog.log is None:
-                MyLog.mutex.acquire()
-                MyLog.log = Log()
-                MyLog.mutex.release()
+    @staticmethod
+    def get_log():
+        if MyLog.log is None:
+            MyLog.mutex.acquire()
+            MyLog.log = Log()
+            MyLog.mutex.release()
 
-            return MyLog.log
+        return MyLog.log
